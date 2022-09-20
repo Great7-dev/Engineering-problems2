@@ -23,6 +23,7 @@ async function driverReport() {
     if(!driverId.includes(elem['driverID'])) {
       driverId.push(elem['driverID']);
     }
+    driverId
     // checking if the cash is true to implement count
     if (elem['isCash']) {
       if (cashTrips[elem.driverID]) {
@@ -71,8 +72,8 @@ async function driverReport() {
   let totalNonCash = Object.values(nonCashAmount);
 
   let driverDetails = []
-  for (let i of driverId) {
-    driverDetails.push(getDriver(i));
+  for (let m of driverId) {
+    driverDetails.push(getDriver(m));
   }
   let promiseDriverInfo = await Promise.allSettled(driverDetails);
 

@@ -9,7 +9,8 @@ const { getTrips, getDriver} = require('api');
 async function analysis() {
   // Your code goes here
   const trips = await getTrips()
-  console.log(trips)
+  // console.log(trips)
+  
 
   let cashCount = 0;
   let nonCashCount = 0;
@@ -18,14 +19,14 @@ async function analysis() {
   let driverTrips = {};
   let driverEarnings = {};
   let driverId = []
-  console.log(driverId)
+  
 
   for(let element of trips) {
     //get driver id
     if (!driverId.includes(element['driverID'])){
       driverId.push(element.driverID)
     }
-    console.log(driverId)
+    
     if (element['isCash'] === true) {
       cashCount++;
       cashAmount += parseFloat(String(element['billedAmount']).split(',').join(''));
@@ -52,8 +53,8 @@ async function analysis() {
   }
   // get driversId from the getDriver function and push them into the driverDetails array
   let driverDetails = []
-  for (let i of driverId) {
-    driverDetails.push(getDriver(i))
+  for (let m of driverId) {
+    driverDetails.push(getDriver(m))
   }
   
   let moreThanOneVehicleCount = 0;
